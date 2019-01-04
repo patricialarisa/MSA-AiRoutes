@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Users\Patricia\AndroidStudioProjects\NewProject\app\src\main\AndroidManifest.xml:2:1-21:12
-INJECTED from C:\Users\Patricia\AndroidStudioProjects\NewProject\app\src\main\AndroidManifest.xml:2:1-21:12
-INJECTED from C:\Users\Patricia\AndroidStudioProjects\NewProject\app\src\main\AndroidManifest.xml:2:1-21:12
-INJECTED from C:\Users\Patricia\AndroidStudioProjects\NewProject\app\src\main\AndroidManifest.xml:2:1-21:12
+ADDED from C:\Users\Patricia\AndroidStudioProjects\NewProject\app\src\main\AndroidManifest.xml:2:1-22:12
+INJECTED from C:\Users\Patricia\AndroidStudioProjects\NewProject\app\src\main\AndroidManifest.xml:2:1-22:12
+INJECTED from C:\Users\Patricia\AndroidStudioProjects\NewProject\app\src\main\AndroidManifest.xml:2:1-22:12
+INJECTED from C:\Users\Patricia\AndroidStudioProjects\NewProject\app\src\main\AndroidManifest.xml:2:1-22:12
 MERGED from [com.android.support:appcompat-v7:27.1.1] C:\Users\Patricia\.gradle\caches\transforms-1\files-1.1\appcompat-v7-27.1.1.aar\a146937700de2735289fd0c764717d19\AndroidManifest.xml:17:1-22:12
 MERGED from [com.android.support.constraint:constraint-layout:1.1.3] C:\Users\Patricia\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.1.3.aar\8e1b9ce59eb4443f7dd42ac95f3f8389\AndroidManifest.xml:2:1-11:12
 MERGED from [com.google.firebase:firebase-auth:16.0.5] C:\Users\Patricia\.gradle\caches\transforms-1\files-1.1\firebase-auth-16.0.5.aar\867ec31aba58a2efd27ad061061292c6\AndroidManifest.xml:17:1-42:12
@@ -38,25 +38,25 @@ MERGED from [android.arch.lifecycle:livedata-core:1.1.0] C:\Users\Patricia\.grad
 MERGED from [android.arch.core:runtime:1.1.1] C:\Users\Patricia\.gradle\caches\transforms-1\files-1.1\runtime-1.1.1.aar\b8db56b1e4caaf1b5108385b09ca78fa\AndroidManifest.xml:17:1-22:12
 MERGED from [android.arch.lifecycle:viewmodel:1.1.0] C:\Users\Patricia\.gradle\caches\transforms-1\files-1.1\viewmodel-1.1.0.aar\4fa5e977636a1cf1d31882f24e8d5e52\AndroidManifest.xml:17:1-22:12
 MERGED from [com.google.android.gms:play-services-measurement-base:16.0.3] C:\Users\Patricia\.gradle\caches\transforms-1\files-1.1\play-services-measurement-base-16.0.3.aar\135712ffd50e43fc4300d4e1d8ee4d8c\AndroidManifest.xml:2:1-9:12
-INJECTED from C:\Users\Patricia\AndroidStudioProjects\NewProject\app\src\main\AndroidManifest.xml:2:1-21:12
-INJECTED from C:\Users\Patricia\AndroidStudioProjects\NewProject\app\src\main\AndroidManifest.xml:2:1-21:12
-INJECTED from C:\Users\Patricia\AndroidStudioProjects\NewProject\app\src\main\AndroidManifest.xml:2:1-21:12
+INJECTED from C:\Users\Patricia\AndroidStudioProjects\NewProject\app\src\main\AndroidManifest.xml:2:1-22:12
+INJECTED from C:\Users\Patricia\AndroidStudioProjects\NewProject\app\src\main\AndroidManifest.xml:2:1-22:12
+INJECTED from C:\Users\Patricia\AndroidStudioProjects\NewProject\app\src\main\AndroidManifest.xml:2:1-22:12
 	package
 		ADDED from C:\Users\Patricia\AndroidStudioProjects\NewProject\app\src\main\AndroidManifest.xml:3:5-41
 		INJECTED from C:\Users\Patricia\AndroidStudioProjects\NewProject\app\src\main\AndroidManifest.xml
 		INJECTED from C:\Users\Patricia\AndroidStudioProjects\NewProject\app\src\main\AndroidManifest.xml
 	android:versionName
 		INJECTED from C:\Users\Patricia\AndroidStudioProjects\NewProject\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\Patricia\AndroidStudioProjects\NewProject\app\src\main\AndroidManifest.xml:2:1-21:12
+		ADDED from C:\Users\Patricia\AndroidStudioProjects\NewProject\app\src\main\AndroidManifest.xml:2:1-22:12
 		INJECTED from C:\Users\Patricia\AndroidStudioProjects\NewProject\app\src\main\AndroidManifest.xml
 	android:versionCode
 		INJECTED from C:\Users\Patricia\AndroidStudioProjects\NewProject\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\Patricia\AndroidStudioProjects\NewProject\app\src\main\AndroidManifest.xml:2:1-21:12
+		ADDED from C:\Users\Patricia\AndroidStudioProjects\NewProject\app\src\main\AndroidManifest.xml:2:1-22:12
 		INJECTED from C:\Users\Patricia\AndroidStudioProjects\NewProject\app\src\main\AndroidManifest.xml
 	xmlns:android
 		ADDED from C:\Users\Patricia\AndroidStudioProjects\NewProject\app\src\main\AndroidManifest.xml:2:11-69
 application
-ADDED from C:\Users\Patricia\AndroidStudioProjects\NewProject\app\src\main\AndroidManifest.xml:5:5-19:19
+ADDED from C:\Users\Patricia\AndroidStudioProjects\NewProject\app\src\main\AndroidManifest.xml:5:5-20:19
 MERGED from [com.android.support.constraint:constraint-layout:1.1.3] C:\Users\Patricia\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.1.3.aar\8e1b9ce59eb4443f7dd42ac95f3f8389\AndroidManifest.xml:9:5-20
 MERGED from [com.android.support.constraint:constraint-layout:1.1.3] C:\Users\Patricia\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.1.3.aar\8e1b9ce59eb4443f7dd42ac95f3f8389\AndroidManifest.xml:9:5-20
 MERGED from [com.google.firebase:firebase-auth:16.0.5] C:\Users\Patricia\.gradle\caches\transforms-1\files-1.1\firebase-auth-16.0.5.aar\867ec31aba58a2efd27ad061061292c6\AndroidManifest.xml:23:5-40:19
@@ -123,6 +123,10 @@ category#android.intent.category.LAUNCHER
 ADDED from C:\Users\Patricia\AndroidStudioProjects\NewProject\app\src\main\AndroidManifest.xml:16:17-77
 	android:name
 		ADDED from C:\Users\Patricia\AndroidStudioProjects\NewProject\app\src\main\AndroidManifest.xml:16:27-74
+activity#com.example.app.newproject.RegisterActivity
+ADDED from C:\Users\Patricia\AndroidStudioProjects\NewProject\app\src\main\AndroidManifest.xml:19:9-63
+	android:name
+		ADDED from C:\Users\Patricia\AndroidStudioProjects\NewProject\app\src\main\AndroidManifest.xml:19:19-51
 uses-sdk
 INJECTED from C:\Users\Patricia\AndroidStudioProjects\NewProject\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from C:\Users\Patricia\AndroidStudioProjects\NewProject\app\src\main\AndroidManifest.xml

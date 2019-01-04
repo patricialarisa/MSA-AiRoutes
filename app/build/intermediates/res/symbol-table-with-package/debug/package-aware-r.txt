@@ -713,6 +713,7 @@ id barrier
 id beginning
 id blocking
 id bottom
+id button2
 id buttonPanel
 id cancel_action
 id center
@@ -763,6 +764,7 @@ id line3
 id listMode
 id list_item
 id login_button
+id mail_text
 id media_actions
 id message
 id middle
@@ -777,10 +779,12 @@ id notification_main_column_container
 id packed
 id parent
 id parentPanel
+id password_text
 id percent
 id progress_circular
 id progress_horizontal
 id radio
+id register_button
 id right
 id right_icon
 id right_side
@@ -871,6 +875,7 @@ layout abc_search_view
 layout abc_select_dialog_material
 layout abc_tooltip
 layout activity_main
+layout activity_register
 layout notification_action
 layout notification_action_tombstone
 layout notification_media_action

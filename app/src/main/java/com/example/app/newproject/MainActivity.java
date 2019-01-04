@@ -125,9 +125,9 @@ public class MainActivity extends AppCompatActivity {
 //    }
 
     public void register(View view){
-        //no error for commit
-//        Intent intent=new Intent(this,RegisterActivity.class);
-//        startActivity(intent);
+
+        Intent intent=new Intent(this,RegisterActivity.class);
+        startActivity(intent);
     }
 
     public void signIn(){
