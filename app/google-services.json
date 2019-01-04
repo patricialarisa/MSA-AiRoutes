@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "140908135087",
+    "firebase_url": "https://msaapp-2fa07.firebaseio.com",
+    "project_id": "msaapp-2fa07",
+    "storage_bucket": "msaapp-2fa07.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:140908135087:android:0bb07880bec7f5d3",
+        "android_client_info": {
+          "package_name": "com.example.patricia.msaapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "140908135087-9fd9qplpnvqqrp2lsje5cb8dequ26m6t.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.patricia.msaapp",
+            "certificate_hash": "118fc2cf6ab8533140782193194520e1af3c140b"
+          }
+        },
+        {
+          "client_id": "140908135087-vmhgghe4bkso8ei7edpcch0tv54hul6p.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD17hF8c5tIqoW1zHO8JOI8HPSQKCFVMls"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "140908135087-vmhgghe4bkso8ei7edpcch0tv54hul6p.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
