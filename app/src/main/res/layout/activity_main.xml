@@ -5,7 +5,7 @@
     android:paddingLeft= "5dp"
     android:paddingRight = "3dp"
     android:paddingTop = "5dp"
-    android:paddingBottom = "5dp" tools:context = ".MainActivity">
+    android:paddingBottom = "5dp" tools:context = "com.example.app.newproject.MainActivity">
 
     <TextView android:text = "Login" android:layout_width="wrap_content"
         android:layout_height = "wrap_content"

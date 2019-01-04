@@ -3316,15 +3316,23 @@ public final class R {
     public static final int common_open_on_phone=0x7f0c0033;
     public static final int common_signin_button_text=0x7f0c0034;
     public static final int common_signin_button_text_long=0x7f0c0035;
-    public static final int email=0x7f0c0036;
-    public static final int large_text=0x7f0c0037;
-    public static final int minimum_password=0x7f0c0038;
-    public static final int new_pass=0x7f0c0039;
-    public static final int remove_user=0x7f0c003a;
-    public static final int search_menu_title=0x7f0c003b;
-    public static final int send_password_reset_email=0x7f0c003c;
-    public static final int status_bar_notification_info_overflow=0x7f0c003d;
-    public static final int title_activity_routes_list=0x7f0c003e;
+    public static final int default_web_client_id=0x7f0c0036;
+    public static final int email=0x7f0c0037;
+    public static final int firebase_database_url=0x7f0c0038;
+    public static final int gcm_defaultSenderId=0x7f0c0039;
+    public static final int google_api_key=0x7f0c003a;
+    public static final int google_app_id=0x7f0c003b;
+    public static final int google_crash_reporting_api_key=0x7f0c003c;
+    public static final int google_storage_bucket=0x7f0c003d;
+    public static final int large_text=0x7f0c003e;
+    public static final int minimum_password=0x7f0c003f;
+    public static final int new_pass=0x7f0c0040;
+    public static final int project_id=0x7f0c0041;
+    public static final int remove_user=0x7f0c0042;
+    public static final int search_menu_title=0x7f0c0043;
+    public static final int send_password_reset_email=0x7f0c0044;
+    public static final int status_bar_notification_info_overflow=0x7f0c0045;
+    public static final int title_activity_routes_list=0x7f0c0046;
   }
   public static final class style {
     public static final int AlertDialog_AppCompat=0x7f0d0000;
