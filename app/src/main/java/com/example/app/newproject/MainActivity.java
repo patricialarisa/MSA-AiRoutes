@@ -64,8 +64,9 @@ public class MainActivity extends AppCompatActivity{
         btnNoAccount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //no error for commit
-                //(new Intent(MainActivity.this,RoutesActivity.class));
+
+                startActivity(new Intent(MainActivity.this,RoutesActivity.class));
+
             }
         });
 
@@ -104,9 +105,9 @@ public class MainActivity extends AppCompatActivity{
                                         Toast.makeText(MainActivity.this, getString(R.string.auth_failed), Toast.LENGTH_LONG).show();
                                     }
                                 } else {
-                                    //no error for commit
-                                   // Intent intent = new Intent(MainActivity.this, RoutesActivity.class);
-                                   // startActivity(intent);
+
+                                    Intent intent = new Intent(MainActivity.this, RoutesActivity.class);
+                                    startActivity(intent);
                                     finish();
                                 }
                             }

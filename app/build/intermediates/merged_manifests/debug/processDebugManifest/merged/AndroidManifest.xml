@@ -31,6 +31,7 @@
             </intent-filter>
         </activity>
         <activity android:name="com.example.app.newproject.RegisterActivity" />
+        <activity android:name="com.example.app.newproject.RoutesActivity" />
         <activity
             android:name="com.google.firebase.auth.internal.FederatedSignInActivity"
             android:excludeFromRecents="true"
