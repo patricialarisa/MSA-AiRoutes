@@ -798,7 +798,6 @@ id right
 id right_icon
 id right_side
 id routes_button
-id routes_list
 id screen
 id scrollIndicatorDown
 id scrollIndicatorUp
