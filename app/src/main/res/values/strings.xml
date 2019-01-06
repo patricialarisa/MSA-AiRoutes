@@ -11,6 +11,7 @@
     <string name="remove_user">Remove user</string>
     <string name="new_pass">New Password</string>
     <string name="category">Choose airport/country</string>
+    <string name="airport">Choose airport</string>
 
     <string-array name="type_arrays">
         <item>Airport</item>

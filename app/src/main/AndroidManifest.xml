@@ -19,7 +19,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".RegisterActivity" />
-        <activity android:name=".RoutesActivity"></activity>
+        <activity android:name=".RoutesActivity" />
+        <activity android:name=".AirportActivity" />
+        <activity android:name=".RoutesListActivity"></activity>
     </application>
 
 </manifest>

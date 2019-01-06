@@ -20,52 +20,60 @@
         android:textColor = "#ff7aff24"
         android:textSize = "35dp" />
 
-    <Spinner
-        android:id="@+id/spinner1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:entries="@array/type_arrays"
-        android:prompt="@string/category"
-        android:layout_below = "@+id/aiRoutes_textView"
-        android:layout_centerHorizontal = "true"
-        android:layout_alignParentStart="true"/>
+    <!--<Spinner-->
+        <!--android:id="@+id/spinner1"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:entries="@array/type_arrays"-->
+        <!--android:prompt="@string/category"-->
+        <!--android:layout_below = "@+id/aiRoutes_textView"-->
+        <!--android:layout_centerHorizontal = "true"-->
+        <!--android:layout_alignParentStart="true"/>-->
 
     <EditText
         android:layout_width = "wrap_content"
         android:layout_height = "wrap_content"
         android:id = "@+id/source_text"
-        android:hint = "Enter Source Location"
+        android:hint = "Enter Departure Country"
         android:focusable = "true"
         android:textColorHighlight = "#ff7eff15"
         android:textColorHint = "#ffff25e6"
         android:layout_marginTop = "46dp"
-        android:layout_below = "@+id/spinner1"
+        android:layout_below = "@+id/aiRoutes_textView"
         android:layout_alignParentLeft = "true"
         android:layout_alignParentStart = "true"
         android:layout_alignParentRight = "true"
         android:layout_alignParentEnd = "true" />
 
-    <EditText
-        android:layout_width = "wrap_content"
-        android:layout_height = "wrap_content"
-        android:id = "@+id/destination_text"
-        android:hint = "Enter Destination Location"
-        android:focusable = "true"
-        android:textColorHighlight = "#ff7eff15"
-        android:textColorHint = "#ffff25e6"
-        android:layout_marginTop = "46dp"
-        android:layout_below = "@+id/source_text"
-        android:layout_alignParentLeft = "true"
-        android:layout_alignParentStart = "true"
-        android:layout_alignParentRight = "true"
-        android:layout_alignParentEnd = "true" />
+    <!--<EditText-->
+        <!--android:layout_width = "wrap_content"-->
+        <!--android:layout_height = "wrap_content"-->
+        <!--android:id = "@+id/destination_text"-->
+        <!--android:hint = "Enter Destination Location"-->
+        <!--android:focusable = "true"-->
+        <!--android:textColorHighlight = "#ff7eff15"-->
+        <!--android:textColorHint = "#ffff25e6"-->
+        <!--android:layout_marginTop = "46dp"-->
+        <!--android:layout_below = "@+id/source_text"-->
+        <!--android:layout_alignParentLeft = "true"-->
+        <!--android:layout_alignParentStart = "true"-->
+        <!--android:layout_alignParentRight = "true"-->
+        <!--android:layout_alignParentEnd = "true" />-->
 
 
     <TextView
         android:id="@+id/responseView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/destination_text"/>
+        android:layout_below="@id/ais"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ais"
+        android:id="@+id/ais"
+        android:layout_below="@id/source_text"
+        />
 
 
     <Button

@@ -705,6 +705,8 @@ id add
 id adjust_height
 id adjust_width
 id aiRoutes_textView
+id aiRoutes_textView_airport
+id ais
 id alertTitle
 id all
 id always
@@ -732,7 +734,6 @@ id customPanel
 id dark
 id decor_content_parent
 id default_activity_button
-id destination_text
 id dimensions
 id direct
 id disableHome
@@ -764,6 +765,7 @@ id light
 id line1
 id line3
 id listMode
+id listRowTextView
 id list_button
 id list_item
 id login_button
@@ -780,6 +782,7 @@ id normal
 id notification_background
 id notification_main_column
 id notification_main_column_container
+id ok_button
 id packed
 id parent
 id parentPanel
@@ -789,10 +792,13 @@ id progress_circular
 id progress_horizontal
 id radio
 id register_button
+id responseAirport
 id responseView
 id right
 id right_icon
 id right_side
+id routes_button
+id routes_list
 id screen
 id scrollIndicatorDown
 id scrollIndicatorUp
@@ -814,7 +820,7 @@ id showHome
 id showTitle
 id source_text
 id spacer
-id spinner1
+id spinner2
 id split_action_bar
 id spread
 id spread_inside
@@ -881,9 +887,12 @@ layout abc_search_dropdown_item_icons_2line
 layout abc_search_view
 layout abc_select_dialog_material
 layout abc_tooltip
+layout activity_airport
 layout activity_main
 layout activity_register
 layout activity_routes
+layout activity_routes_list
+layout activity_routes_list_row
 layout notification_action
 layout notification_action_tombstone
 layout notification_media_action
@@ -902,6 +911,7 @@ layout notification_template_part_time
 layout select_dialog_item_material
 layout select_dialog_multichoice_material
 layout select_dialog_singlechoice_material
+layout spinner_item
 layout support_simple_spinner_dropdown_item
 mipmap ic_launcher
 mipmap ic_launcher_round
@@ -936,6 +946,7 @@ string abc_shareactionprovider_share_with_application
 string abc_toolbar_collapse_description
 string action_settings
 string action_sign_in_short
+string airport
 string app_name
 string auth_failed
 string category
