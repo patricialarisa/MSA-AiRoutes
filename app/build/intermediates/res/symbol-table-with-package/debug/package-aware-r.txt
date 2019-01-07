@@ -53,6 +53,7 @@ attr alertDialogTheme
 attr allowStacking
 attr alpha
 attr alphabeticModifiers
+attr ambientEnabled
 attr arrowHeadLength
 attr arrowShaftLength
 attr autoCompleteTextViewStyle
@@ -83,6 +84,13 @@ attr buttonStyle
 attr buttonStyleSmall
 attr buttonTint
 attr buttonTintMode
+attr cameraBearing
+attr cameraMaxZoomPreference
+attr cameraMinZoomPreference
+attr cameraTargetLat
+attr cameraTargetLng
+attr cameraTilt
+attr cameraZoom
 attr chainUseRtl
 attr checkboxStyle
 attr checkedTextViewStyle
@@ -163,6 +171,10 @@ attr initialActivityCount
 attr isLightTheme
 attr itemPadding
 attr keylines
+attr latLngBoundsNorthEastLatitude
+attr latLngBoundsNorthEastLongitude
+attr latLngBoundsSouthWestLatitude
+attr latLngBoundsSouthWestLongitude
 attr layout
 attr layout_anchor
 attr layout_anchorGravity
@@ -231,8 +243,10 @@ attr listPreferredItemHeightLarge
 attr listPreferredItemHeightSmall
 attr listPreferredItemPaddingLeft
 attr listPreferredItemPaddingRight
+attr liteMode
 attr logo
 attr logoDescription
+attr mapType
 attr maxButtonHeight
 attr measureWithLargestChild
 attr multiChoiceItemLayout
@@ -329,6 +343,14 @@ attr tooltipText
 attr track
 attr trackTint
 attr trackTintMode
+attr uiCompass
+attr uiMapToolbar
+attr uiRotateGestures
+attr uiScrollGestures
+attr uiTiltGestures
+attr uiZoomControls
+attr uiZoomGestures
+attr useViewLifecycle
 attr viewInflaterClass
 attr voiceIcon
 attr windowActionBar
@@ -341,6 +363,7 @@ attr windowFixedWidthMinor
 attr windowMinWidthMajor
 attr windowMinWidthMinor
 attr windowNoTitle
+attr zOrderOnTop
 bool abc_action_bar_embed_tabs
 bool abc_allow_stacked_button_bar
 bool abc_config_actionMenuItemAllCaps
@@ -752,6 +775,7 @@ id gone
 id groups
 id home
 id homeAsUp
+id hybrid
 id icon
 id icon_group
 id icon_only
@@ -770,6 +794,7 @@ id list_button
 id list_item
 id login_button
 id mail_text
+id map
 id map_button
 id media_actions
 id message
@@ -798,6 +823,7 @@ id right
 id right_icon
 id right_side
 id routes_button
+id satellite
 id screen
 id scrollIndicatorDown
 id scrollIndicatorUp
@@ -833,6 +859,7 @@ id submenuarrow
 id submit_area
 id tabMode
 id tag_transition_group
+id terrain
 id text
 id text2
 id textSpacerNoButtons
@@ -888,6 +915,7 @@ layout abc_select_dialog_material
 layout abc_tooltip
 layout activity_airport
 layout activity_main
+layout activity_maps
 layout activity_register
 layout activity_routes
 layout activity_routes_list
@@ -976,6 +1004,7 @@ string gcm_defaultSenderId
 string google_api_key
 string google_app_id
 string google_crash_reporting_api_key
+string google_maps_key
 string google_storage_bucket
 string large_text
 string minimum_password
@@ -985,6 +1014,7 @@ string remove_user
 string search_menu_title
 string send_password_reset_email
 string status_bar_notification_info_overflow
+string title_activity_maps
 string title_activity_routes_list
 style AlertDialog_AppCompat
 style AlertDialog_AppCompat_Light
@@ -1361,6 +1391,7 @@ styleable LinearLayoutCompat android_gravity android_orientation android_baselin
 styleable LinearLayoutCompat_Layout android_layout_gravity android_layout_width android_layout_height android_layout_weight
 styleable ListPopupWindow android_dropDownHorizontalOffset android_dropDownVerticalOffset
 styleable LoadingImageView circleCrop imageAspectRatio imageAspectRatioAdjust
+styleable MapAttrs ambientEnabled cameraBearing cameraMaxZoomPreference cameraMinZoomPreference cameraTargetLat cameraTargetLng cameraTilt cameraZoom latLngBoundsNorthEastLatitude latLngBoundsNorthEastLongitude latLngBoundsSouthWestLatitude latLngBoundsSouthWestLongitude liteMode mapType uiCompass uiMapToolbar uiRotateGestures uiScrollGestures uiTiltGestures uiZoomControls uiZoomGestures useViewLifecycle zOrderOnTop
 styleable MenuGroup android_enabled android_id android_visible android_menuCategory android_orderInCategory android_checkableBehavior
 styleable MenuItem android_icon android_enabled android_id android_checked android_visible android_menuCategory android_orderInCategory android_title android_titleCondensed android_alphabeticShortcut android_numericShortcut android_checkable android_onClick actionLayout actionProviderClass actionViewClass alphabeticModifiers contentDescription iconTint iconTintMode numericModifiers showAsAction tooltipText
 styleable MenuView android_windowAnimationStyle android_itemTextAppearance android_horizontalDivider android_verticalDivider android_headerBackground android_itemBackground android_itemIconDisabledAlpha preserveIconSpacing subMenuArrow
