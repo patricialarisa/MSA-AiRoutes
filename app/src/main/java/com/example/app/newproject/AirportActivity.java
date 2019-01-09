@@ -12,6 +12,8 @@ import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.google.android.gms.maps.model.LatLng;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -22,8 +24,11 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
+import static com.example.app.newproject.RoutesActivity.detailAirports;
 import static com.example.app.newproject.RoutesActivity.responseView;
 
 public class AirportActivity extends AppCompatActivity {
@@ -31,6 +36,9 @@ public class AirportActivity extends AppCompatActivity {
     static String airport="";
     static String departureIata="";
     static ArrayList<String> routes=new ArrayList<String>();
+    static Set<String> arrivals = new HashSet<String>();
+    static LatLng departureLatLng=null;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,6 +73,18 @@ public class AirportActivity extends AppCompatActivity {
                 String value=spinner.getSelectedItem().toString();
                 airport=value.substring(0,value.indexOf('('));
                 departureIata=value.substring(value.indexOf('(')+1,value.indexOf(')'));
+//                int index=spinner.getSelectedItemPosition();
+                int counter=0;
+                for(String s:detailAirports){
+
+                    if(s.contains(value)){
+                        String departureLat=detailAirports.get(counter).substring(value.indexOf(':')+1,value.indexOf('/'));
+                        String departureLong=detailAirports.get(counter).substring(value.indexOf('/')+1);
+                        departureLatLng=new LatLng(Double.parseDouble(departureLat),Double.parseDouble(departureLong));
+                    }
+                    counter++;
+                }
+
                 r.setText(departureIata);
                // startActivity(new Intent(AirportActivity.this,RoutesActivity.class));
             }
@@ -153,6 +173,7 @@ public class AirportActivity extends AppCompatActivity {
                     arrivalTime=jsonObject.getString("arrivalTime");
 
                     routes.add(departureIata+" - "+arrivalIata);
+                    arrivals.add(arrivalIata);
 
                 }
 

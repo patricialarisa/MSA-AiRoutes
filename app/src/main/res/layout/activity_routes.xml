@@ -89,7 +89,6 @@
         android:layout_height="wrap_content"
         android:text="View Results on Map"
         android:id="@+id/map_button"
-        android:layout_below = "@+id/list_button"
         android:layout_toRightOf="@+id/list_button"/>
 
 

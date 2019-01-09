@@ -12,6 +12,8 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.google.android.gms.maps.model.LatLng;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -23,7 +25,10 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
+
+import static com.example.app.newproject.AirportActivity.arrivals;
 
 public class RoutesActivity extends AppCompatActivity {
 
@@ -38,12 +43,16 @@ public class RoutesActivity extends AppCompatActivity {
   //  static ArrayList<Route> routes=new ArrayList<>();
     EditText sourceLocationText;
     Button aiportBtn;
+    Button mapBtn;
 //    EditText destinationLocationText;
 //    Spinner spinner;
     static List<String> airports;
     static TextView responseView;
     static FileWriter writer;
     private String countryIso="";
+    static ArrayList<LatLng> arrivalAirports=new ArrayList<>();
+    int counter=0;
+    static LinkedList<String> detailAirports=new LinkedList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,6 +75,7 @@ public class RoutesActivity extends AppCompatActivity {
 //                String spinnerText=String.valueOf(spinner.getSelectedItem());
                  new RetrieveFeedTask(getApplicationContext()).execute();
 
+
             }
         });
 
@@ -77,6 +87,16 @@ public class RoutesActivity extends AppCompatActivity {
                 new AirportRetrieveTask(getApplicationContext()).execute();
               //  startActivity(new Intent(RoutesActivity.this,AirportActivity.class));
 
+            }
+        });
+
+        mapBtn=(Button) findViewById(R.id.map_button);
+        mapBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                for(String s : arrivals){
+                    new AirportNameRetrieveTask(getApplicationContext(),s).execute();
+                }
             }
         });
 
@@ -235,9 +255,11 @@ public class RoutesActivity extends AppCompatActivity {
             responseView.setText(response);
 
 
-            airports=new ArrayList<String>();
+            airports=new LinkedList<String>();
             String nameAirport="";
             String codeIata="";
+            String departureLat="";
+            String departureLong="";
             JSONArray jsonArray = null;
             try {
                 jsonArray = new JSONArray(response);
@@ -245,8 +267,11 @@ public class RoutesActivity extends AppCompatActivity {
                     JSONObject jsonObject = jsonArray.getJSONObject(i);
                     codeIata = jsonObject.getString("codeIataAirport");
                     nameAirport=jsonObject.getString("nameAirport");
+                    departureLat=jsonObject.getString("latitudeAirport");
+                    departureLong=jsonObject.getString("longitudeAirport");
 
                     airports.add(nameAirport+"("+codeIata+")");
+                    detailAirports.add(nameAirport+":"+departureLat+"/"+departureLong);
                 }
 
             } catch (JSONException e) {
@@ -255,6 +280,98 @@ public class RoutesActivity extends AppCompatActivity {
 
 
               context.startActivity(new Intent(context, AirportActivity.class));
+        }
+    }
+
+
+
+    class AirportNameRetrieveTask extends AsyncTask<Void,Void,String> {
+
+        private Exception exception;
+
+        private Context context;
+        private String iata;
+
+
+        private AirportNameRetrieveTask(Context context,String iata){
+            this.context=context.getApplicationContext();
+            this.iata=iata;
+            counter++;
+        }
+
+
+        protected void onPreExecute() {
+            //progressBar.setVisibility(View.VISIBLE);
+            //responseView.setText("");
+        }
+
+        protected String doInBackground(Void... urls) {
+            //   String sourceLocation = sourceLocationText.getText().toString();
+//            String destinationLocation = destinationLocationText.getText().toString();
+            // Do some validation here
+
+            try {
+                URL url=null;
+//                String spinnerText=String.valueOf(spinner.getSelectedItem());
+//                if("Airport".equals(spinnerText)){
+                url = new URL(API_AIRPORT_URL + API_KEY_AIRPORT + "&codeIataAirport=" + iata);
+//                }else if ("Country".equals(spinnerText)){
+                // url = new URL(API_AIRPORT_URL + API_KEY_AIRPORT + "&nameCountry=" + sourceLocation);
+//                }
+                //URL url = new URL(API_AIRPORT_URL + API_KEY_AIRPORT + "&nameAirport=" + sourceLocation);
+                HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
+                try {
+                    BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(urlConnection.getInputStream()));
+                    StringBuilder stringBuilder = new StringBuilder();
+                    String line;
+                    while ((line = bufferedReader.readLine()) != null) {
+                        stringBuilder.append(line).append("\n");
+                    }
+                    bufferedReader.close();
+                    return stringBuilder.toString();
+                }
+                finally{
+                    urlConnection.disconnect();
+                }
+            }
+            catch(Exception e) {
+                Log.e("ERROR", e.getMessage(), e);
+                return null;
+            }
+        }
+
+        protected void onPostExecute(String response) {
+            if(response == null) {
+                response = "THERE WAS AN ERROR";
+            }
+            //progressBar.setVisibility(View.GONE);
+            Log.i("INFO", response);
+            responseView.setText(response);
+
+
+           // airports=new ArrayList<String>();
+            String latitudeAirport="";
+            String longitudeAirport="";
+            JSONArray jsonArray = null;
+            try {
+                jsonArray = new JSONArray(response);
+                for (int i = 0; i < jsonArray.length(); i++) {
+                    JSONObject jsonObject = jsonArray.getJSONObject(i);
+                    latitudeAirport = jsonObject.getString("latitudeAirport");
+                    longitudeAirport=jsonObject.getString("longitudeAirport");
+
+
+                    arrivalAirports.add(new LatLng(Double.parseDouble(latitudeAirport),Double.parseDouble(longitudeAirport)));
+                }
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+
+            if(counter==arrivals.size()-1) {
+                context.startActivity(new Intent(context, MapsActivity.class));
+            }
         }
     }
 }
