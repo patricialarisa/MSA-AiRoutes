@@ -54,8 +54,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 //
 //        if(Geocoder.isPresent()){
 //            try {
-//                String location = "Cluj";
-//                String anotherLocation="Sydney";
+//                String location = "Oradea";
+//                String anotherLocation="Henri Coanda International";
 //                Geocoder gc = new Geocoder(this);
 //                List<Address> addresses= gc.getFromLocationName(location, 5); // get the found Address Objects
 //
@@ -79,16 +79,29 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 //                // handle the exception
 //            }
 //        }
-
-        // Add a marker in Sydney and move the camera
-//        LatLng sydney = new LatLng(-34, 151);
+//
+//       //  Add a marker in Sydney and move the camera
+//        //LatLng sydney = new LatLng(-34, 151);
+//
 //        LatLng sydney=ll.get(0);
 //        LatLng b=ss.get(0);
+////        LatLng sydney1=ll.get(1);
+////        LatLng b1=ss.get(1);
 //        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
 
+//        Polyline polyline1 = googleMap.addPolyline(new PolylineOptions()
+//                    .clickable(false)
+//                    .add(sydney, b));
+////        Polyline polyline11 = googleMap.addPolyline(new PolylineOptions()
+////                .clickable(false)
+////                .add(sydney1, b1));
+//                mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
 
-        for(LatLng l:arrivalAirports) {
-            Polyline polyline1 = googleMap.addPolyline(new PolylineOptions()
+        mMap.addMarker(new MarkerOptions().position(departureLatLng).title("Marker in Sydney"));
+        for(int i=0;i<arrivalAirports.size();i++){
+       // for(LatLng l:arrivalAirports) {
+            LatLng l=arrivalAirports.get(i);
+             googleMap.addPolyline(new PolylineOptions()
                     .clickable(false)
                     .add(departureLatLng, l));
         }

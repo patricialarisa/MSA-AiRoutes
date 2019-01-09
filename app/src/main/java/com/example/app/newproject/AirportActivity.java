@@ -28,6 +28,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import static com.example.app.newproject.RoutesActivity.API_KEY_AIRPORT;
+import static com.example.app.newproject.RoutesActivity.arrivalAirports;
 import static com.example.app.newproject.RoutesActivity.detailAirports;
 import static com.example.app.newproject.RoutesActivity.responseView;
 
@@ -75,17 +77,19 @@ public class AirportActivity extends AppCompatActivity {
                 departureIata=value.substring(value.indexOf('(')+1,value.indexOf(')'));
 //                int index=spinner.getSelectedItemPosition();
                 int counter=0;
+                String departureLat="";
+                String departureLong="";
                 for(String s:detailAirports){
 
-                    if(s.contains(value)){
-                        String departureLat=detailAirports.get(counter).substring(value.indexOf(':')+1,value.indexOf('/'));
-                        String departureLong=detailAirports.get(counter).substring(value.indexOf('/')+1);
+                    if(s.contains(airport)){
+                        departureLat=detailAirports.get(counter).substring(s.indexOf(':')+1,s.indexOf('/'));
+                        departureLong=detailAirports.get(counter).substring(s.indexOf('/')+1);
                         departureLatLng=new LatLng(Double.parseDouble(departureLat),Double.parseDouble(departureLong));
                     }
                     counter++;
                 }
 
-                r.setText(departureIata);
+               // r.setText(arrivalAirports.get(0).latitude+"");
                // startActivity(new Intent(AirportActivity.this,RoutesActivity.class));
             }
         });
@@ -126,7 +130,7 @@ public class AirportActivity extends AppCompatActivity {
 //                if("Airport".equals(spinnerText)){
 //                    url = new URL(API_AIRPORT_URL + API_KEY_AIRPORT + "&nameAirport=" + sourceLocation);
 //                }else if ("Country".equals(spinnerText)){
-                url = new URL("http://aviation-edge.com/v2/public/routes?key=37b758-783b43&departureIata=" + departureIata);
+                url = new URL("http://aviation-edge.com/v2/public/routes?key="+API_KEY_AIRPORT+"&departureIata=" + departureIata);
 //                }
                 //URL url = new URL(API_AIRPORT_URL + API_KEY_AIRPORT + "&nameAirport=" + sourceLocation);
                 HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
@@ -166,7 +170,7 @@ public class AirportActivity extends AppCompatActivity {
             JSONArray jsonArray = null;
             try {
                 jsonArray = new JSONArray(response);
-                for (int i = 0; i < jsonArray.length(); i++) {
+                for (int i = 0; i < jsonArray.length()-5; i++) {
                     JSONObject jsonObject = jsonArray.getJSONObject(i);
                     departureTime=jsonObject.getString("departureTime");
                     arrivalIata=jsonObject.getString("arrivalIata");

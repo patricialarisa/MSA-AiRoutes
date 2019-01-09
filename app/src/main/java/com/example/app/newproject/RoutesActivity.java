@@ -32,7 +32,7 @@ import static com.example.app.newproject.AirportActivity.arrivals;
 
 public class RoutesActivity extends AppCompatActivity {
 
-    static String API_KEY_AIRPORT="37b758-783b43";
+    static String API_KEY_AIRPORT="";
     static final String API_KEY_CITY="";
     //https://aviation-edge.com/v2/public/airportDatabase?key=[API_KEY]&nameAirport=DE
     static final String API_AIRPORT_URL="https://aviation-edge.com/v2/public/airportDatabase?key=";
@@ -51,7 +51,7 @@ public class RoutesActivity extends AppCompatActivity {
     static FileWriter writer;
     private String countryIso="";
     static ArrayList<LatLng> arrivalAirports=new ArrayList<>();
-    int counter=0;
+    int myCounter=0;
     static LinkedList<String> detailAirports=new LinkedList<>();
 
     @Override
@@ -296,7 +296,7 @@ public class RoutesActivity extends AppCompatActivity {
         private AirportNameRetrieveTask(Context context,String iata){
             this.context=context.getApplicationContext();
             this.iata=iata;
-            counter++;
+            myCounter++;
         }
 
 
@@ -369,9 +369,9 @@ public class RoutesActivity extends AppCompatActivity {
             }
 
 
-            if(counter==arrivals.size()-1) {
+           // if(myCounter==arrivals.size()-5) {
                 context.startActivity(new Intent(context, MapsActivity.class));
-            }
+          //  }
         }
     }
 }
