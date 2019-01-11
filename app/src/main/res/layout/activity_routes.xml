@@ -6,19 +6,21 @@
     android:paddingLeft= "5dp"
     android:paddingRight = "3dp"
     android:paddingTop = "5dp"
+    android:background="@drawable/background"
     android:paddingBottom = "5dp" tools:context = ".RoutesActivity">
 
 
-
     <TextView
-        android:layout_width = "wrap_content"
-        android:layout_height = "wrap_content"
-        android:text = "aiRoutes"
-        android:id = "@+id/aiRoutes_textView"
-        android:layout_centerHorizontal = "true"
-        android:layout_alignParentTop = "true"
-        android:textColor = "#ff7aff24"
-        android:textSize = "35dp" />
+        android:id="@+id/aiRoutes_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:text="aiRoutes"
+        android:textColor="@color/common_google_signin_btn_text_dark_focused"
+        android:textSize="35dp"
+        android:textStyle="bold" />
 
     <!--<Spinner-->
         <!--android:id="@+id/spinner1"-->
@@ -31,19 +33,24 @@
         <!--android:layout_alignParentStart="true"/>-->
 
     <EditText
-        android:layout_width = "wrap_content"
-        android:layout_height = "wrap_content"
-        android:id = "@+id/source_text"
-        android:hint = "Enter Departure Country"
-        android:focusable = "true"
-        android:textColorHighlight = "#ff7eff15"
-        android:textColorHint = "#ffff25e6"
-        android:layout_marginTop = "46dp"
-        android:layout_below = "@+id/aiRoutes_textView"
-        android:layout_alignParentLeft = "true"
-        android:layout_alignParentStart = "true"
-        android:layout_alignParentRight = "true"
-        android:layout_alignParentEnd = "true" />
+        android:id="@+id/source_text"
+        android:layout_width="260dp"
+        android:layout_height="50dp"
+        android:layout_below="@+id/aiRoutes_textView"
+
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="116dp"
+        android:layout_marginRight="5dp"
+        android:background="@color/colorPrimaryDark"
+        android:focusable="true"
+        android:hint="Enter Departure Country"
+        android:paddingLeft="10dp"
+        android:textColor="@color/common_google_signin_btn_text_dark_focused"
+        android:textColorHighlight="@color/common_google_signin_btn_text_dark_focused"
+        android:textColorHint="@color/common_google_signin_btn_text_dark_focused"
+        android:textColorLink="@color/common_google_signin_btn_text_dark_focused" />
 
     <!--<EditText-->
         <!--android:layout_width = "wrap_content"-->
@@ -68,28 +75,30 @@
         android:layout_below="@id/ais"/>
 
     <Button
+        android:id="@+id/ais"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Ais"
-        android:id="@+id/ais"
         android:layout_below="@id/source_text"
-        />
+        android:layout_marginLeft="80dp"
+        android:layout_marginTop="110dp"
+        android:text="Choose @string/airport" />
 
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="View Results as List"
         android:id="@+id/list_button"
-        android:layout_alignParentBottom="true"
-        />
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+
+        android:layout_marginTop="194dp"
+        android:layout_toRightOf="@+id/source_text"
+        android:text="OK" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="View Results on Map"
         android:id="@+id/map_button"
-        android:layout_toRightOf="@+id/list_button"/>
+        />
 
 
 

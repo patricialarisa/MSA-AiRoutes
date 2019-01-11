@@ -1,14 +1,21 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@drawable/background">
 
     <TextView
-        android:layout_width="match_parent"
+        android:id="@+id/aiRoutes_textView"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="dev2qa.com --- ListActivity Example"
-        android:textSize="25dp"
-        android:textColor="@android:color/white"/>
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="110dp"
+        android:layout_marginTop="30dp"
+        android:text="aiRoutes"
+        android:textColor="@color/common_google_signin_btn_text_dark_focused"
+        android:textSize="35dp"
+        android:textStyle="bold" />
     <!--android:background="@color/colorBlue"-->
     <ListView
         android:id="@android:id/list"

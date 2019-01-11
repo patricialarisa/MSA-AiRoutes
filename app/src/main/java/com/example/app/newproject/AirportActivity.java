@@ -68,6 +68,7 @@ public class AirportActivity extends AppCompatActivity {
 
         spinnerArrayAdapter.setDropDownViewResource(R.layout.spinner_item);
         spinner.setAdapter(spinnerArrayAdapter);
+        spinner.setSelection(0);
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override

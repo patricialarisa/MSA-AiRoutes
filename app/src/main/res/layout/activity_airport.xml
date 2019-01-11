@@ -6,55 +6,53 @@
     android:paddingLeft= "5dp"
     android:paddingRight = "3dp"
     android:paddingTop = "5dp"
+    android:background="@drawable/background"
     android:paddingBottom = "5dp" tools:context = ".AirportActivity">
 
 
 
     <TextView
-        android:layout_width = "wrap_content"
-        android:layout_height = "wrap_content"
-        android:text = "aiRoutes"
-        android:id = "@+id/aiRoutes_textView-airport"
-        android:layout_centerHorizontal = "true"
-        android:layout_alignParentTop = "true"
-        android:textColor = "#ff7aff24"
-        android:textSize = "35dp" />
+        android:id="@+id/aiRoutes_textView-airport"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:text="aiRoutes"
+        android:textColor="@color/common_google_signin_btn_text_dark_focused"
+        android:textSize="35dp"
+        android:textStyle="bold" />
 
     <Spinner
         android:id="@+id/spinner2"
-        android:layout_width="wrap_content"
+        android:spinnerMode="dialog"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:prompt="@string/airport"
-        android:layout_below = "@+id/aiRoutes_textView-airport"
-        android:layout_centerHorizontal = "true"
-        android:layout_alignParentStart="true"/>
+        android:layout_below="@+id/aiRoutes_textView-airport"
+        android:layout_alignParentStart="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="90dp"
+        android:prompt="@string/airport" />
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="OK"
         android:id="@+id/ok_button"
-        android:layout_alignParentBottom="true"
-        />
-
-    <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Show routes"
+        android:layout_marginTop="150dp"
+        android:layout_toRightOf="@id/spinner2"
+        android:text="OK" />
+
+    <Button
         android:id="@+id/routes_button"
-        android:layout_above = "@+id/ok_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="130dp"
 
-        />
 
-    <TextView
-        android:layout_width = "wrap_content"
-        android:layout_height = "wrap_content"
-        android:text = "aiRoutes"
-        android:id = "@+id/responseAirport"
-        android:layout_centerHorizontal = "true"
-        android:layout_alignParentTop = "true"
-        android:textColor = "#ff7aff24"
-        android:textSize = "35dp"
-        android:layout_above = "@+id/routes_button"/>
+        android:layout_marginTop="350dp"
+        android:text="Show routes" />
+
+
 
 </RelativeLayout>
