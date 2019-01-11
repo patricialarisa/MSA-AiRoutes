@@ -49,57 +49,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
-//        List<LatLng> ll=new ArrayList<LatLng>();
-//        List<LatLng> ss=new ArrayList<LatLng>();
-//
-//        if(Geocoder.isPresent()){
-//            try {
-//                String location = "Oradea";
-//                String anotherLocation="Henri Coanda International";
-//                Geocoder gc = new Geocoder(this);
-//                List<Address> addresses= gc.getFromLocationName(location, 5); // get the found Address Objects
-//
-//                 ll = new ArrayList<LatLng>(addresses.size()); // A list to save the coordinates if they are available
-//                for(Address a : addresses){
-//                    if(a.hasLatitude() && a.hasLongitude()){
-//                        ll.add(new LatLng(a.getLatitude(), a.getLongitude()));
-//                    }
-//                }
-//
-//                Geocoder gc2 = new Geocoder(this);
-//                List<Address> addresses2= gc2.getFromLocationName(anotherLocation, 5); // get the found Address Objects
-//
-//                ss = new ArrayList<LatLng>(addresses2.size()); // A list to save the coordinates if they are available
-//                for(Address a : addresses2){
-//                    if(a.hasLatitude() && a.hasLongitude()){
-//                        ss.add(new LatLng(a.getLatitude(), a.getLongitude()));
-//                    }
-//                }
-//            } catch (IOException e) {
-//                // handle the exception
-//            }
-//        }
-//
-//       //  Add a marker in Sydney and move the camera
-//        //LatLng sydney = new LatLng(-34, 151);
-//
-//        LatLng sydney=ll.get(0);
-//        LatLng b=ss.get(0);
-////        LatLng sydney1=ll.get(1);
-////        LatLng b1=ss.get(1);
-//        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
 
-//        Polyline polyline1 = googleMap.addPolyline(new PolylineOptions()
-//                    .clickable(false)
-//                    .add(sydney, b));
-////        Polyline polyline11 = googleMap.addPolyline(new PolylineOptions()
-////                .clickable(false)
-////                .add(sydney1, b1));
-//                mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
 
-        mMap.addMarker(new MarkerOptions().position(departureLatLng).title("Marker in Sydney"));
+        mMap.addMarker(new MarkerOptions().position(departureLatLng).title("Marker departure"));
         for(int i=0;i<arrivalAirports.size();i++){
-       // for(LatLng l:arrivalAirports) {
             LatLng l=arrivalAirports.get(i);
              googleMap.addPolyline(new PolylineOptions()
                     .clickable(false)

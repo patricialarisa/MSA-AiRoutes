@@ -9,6 +9,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -20,7 +21,7 @@ public class MainActivity extends AppCompatActivity{
 
     private EditText inputEmail, inputPassword;
     private FirebaseAuth auth;
-    // private ProgressBar progressBar;
+    private ProgressBar progressBar;
     private Button btnSignup, btnLogin, btnReset,btnNoAccount;
 
 
@@ -36,17 +37,12 @@ public class MainActivity extends AppCompatActivity{
 //            finish();
 //        }
 
-
-//        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-//        setSupportActionBar(toolbar);
-
         inputEmail = (EditText) findViewById(R.id.editText_mail);
         inputPassword = (EditText) findViewById(R.id.editText2_pass);
-        // progressBar = (ProgressBar) findViewById(R.id.progressBar);
+        progressBar = (ProgressBar) findViewById(R.id.simpleProgressBar);
 
         btnLogin = (Button) findViewById(R.id.login_button);
         btnNoAccount= (Button) findViewById(R.id.no_account_button);
-        //btnReset = (Button) findViewById(R.id.btn_reset_password);
 
         //Get Firebase auth instance
         auth = FirebaseAuth.getInstance();
@@ -56,7 +52,7 @@ public class MainActivity extends AppCompatActivity{
             public void onClick(View v) {
 
                startActivity(new Intent(MainActivity.this,RoutesActivity.class));
-//                startActivity(new Intent(MainActivity.this,MapsActivity.class));
+              // finish();
 
             }
         });
@@ -69,15 +65,17 @@ public class MainActivity extends AppCompatActivity{
 
                 if (TextUtils.isEmpty(email)) {
                     Toast.makeText(getApplicationContext(), "Enter email address!", Toast.LENGTH_SHORT).show();
+                    progressBar.setVisibility(View.GONE);
                     return;
                 }
 
                 if (TextUtils.isEmpty(password)) {
                     Toast.makeText(getApplicationContext(), "Enter password!", Toast.LENGTH_SHORT).show();
+                    progressBar.setVisibility(View.GONE);
                     return;
                 }
 
-                //  progressBar.setVisibility(View.VISIBLE);
+                  progressBar.setVisibility(View.VISIBLE);
 
                 //authenticate user
                 auth.signInWithEmailAndPassword(email, password)
@@ -92,8 +90,10 @@ public class MainActivity extends AppCompatActivity{
                                     // there was an error
                                     if (password.length() < 6) {
                                         inputPassword.setError(getString(R.string.minimum_password));
+                                        progressBar.setVisibility(View.GONE);
                                     } else {
                                         Toast.makeText(MainActivity.this, getString(R.string.auth_failed), Toast.LENGTH_LONG).show();
+                                        progressBar.setVisibility(View.GONE);
                                     }
                                 } else {
 
@@ -110,9 +110,10 @@ public class MainActivity extends AppCompatActivity{
 
     public void register(View view){
 
+        progressBar.setVisibility(View.VISIBLE);
         Intent intent=new Intent(this,RegisterActivity.class);
         startActivity(intent);
-       // finish();
+        finish();
     }
 
 }

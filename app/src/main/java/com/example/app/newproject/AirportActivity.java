@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -35,7 +36,8 @@ import static com.example.app.newproject.RoutesActivity.responseView;
 
 public class AirportActivity extends AppCompatActivity {
 
-   // static String airport="";
+    private ProgressBar progressBar;
+
     //departure Iata to retrieve arrival airports
     private String departureIata="";
     //departure + arrival Iata to view in list activity
@@ -53,8 +55,10 @@ public class AirportActivity extends AppCompatActivity {
 
         final Spinner spinner = (Spinner) findViewById(R.id.spinner2);
         Button btn = (Button) findViewById(R.id.ok_button);
-        Button routesBtn=(Button) findViewById(R.id.routes_button);
-    //    final TextView r=(TextView) findViewById(R.id.responseAirport);
+        final Button routesBtn=(Button) findViewById(R.id.routes_button);
+        routesBtn.setEnabled(false);
+        progressBar = (ProgressBar) findViewById(R.id.simpleProgressBar);
+
         final List<String> ai=RoutesActivity.airports;
 
         // Initializing an ArrayAdapter
@@ -68,6 +72,7 @@ public class AirportActivity extends AppCompatActivity {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                routesBtn.setEnabled(true);
                 String value=spinner.getSelectedItem().toString();
                 String airport=value.substring(0,value.indexOf('('));
                 departureIata=value.substring(value.indexOf('(')+1,value.indexOf(')'));
@@ -98,8 +103,6 @@ public class AirportActivity extends AppCompatActivity {
 
     class RoutesTask extends AsyncTask<Void,Void,String> {
 
-        private Exception exception;
-
         private Context context;
         private String sourceLocation;
 
@@ -109,8 +112,7 @@ public class AirportActivity extends AppCompatActivity {
 
 
         protected void onPreExecute() {
-            //progressBar.setVisibility(View.VISIBLE);
-            //responseView.setText("");
+            progressBar.setVisibility(View.VISIBLE);
         }
 
         protected String doInBackground(Void... urls) {
@@ -143,11 +145,7 @@ public class AirportActivity extends AppCompatActivity {
             if(response == null) {
                 response = "THERE WAS AN ERROR";
             }
-            //progressBar.setVisibility(View.GONE);
-            Log.i("INFO", response);
-            responseView.setText(response);
-
-
+            progressBar.setVisibility(View.GONE);
 
             String departureTime="";
             String arrivalIata="";
@@ -155,13 +153,13 @@ public class AirportActivity extends AppCompatActivity {
             JSONArray jsonArray = null;
             try {
                 jsonArray = new JSONArray(response);
-                for (int i = 0; i < jsonArray.length()-5; i++) {
+                for (int i = 0; i < jsonArray.length(); i++) {
                     JSONObject jsonObject = jsonArray.getJSONObject(i);
                     departureTime=jsonObject.getString("departureTime");
                     arrivalIata=jsonObject.getString("arrivalIata");
                     arrivalTime=jsonObject.getString("arrivalTime");
 
-                    routes.add(departureIata+" - "+arrivalIata);
+                    routes.add(departureIata+"("+departureTime+")"+" - "+arrivalIata+"("+arrivalTime+")");
                     arrivals.add(arrivalIata);
                 }
 
@@ -172,6 +170,7 @@ public class AirportActivity extends AppCompatActivity {
             Intent intent=new Intent(context, RoutesListActivity.class);
             intent.putStringArrayListExtra("routes",routes);
             context.startActivity(intent);
+           // finish();
         }
     }
 }

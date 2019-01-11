@@ -91,9 +91,18 @@
         android:id="@+id/list_button"
         android:layout_width="wrap_content"
         android:layout_height="50dp"
-        android:layout_marginTop="203dp"
+        android:layout_marginTop="198dp"
         android:layout_toRightOf="@+id/source_text"
         android:text="OK" />
+
+    <ProgressBar
+        android:id="@+id/simpleProgressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="260dp"
+        android:background="@color/colorAccent"
+        android:visibility="invisible" />
 
 
 

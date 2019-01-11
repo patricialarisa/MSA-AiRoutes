@@ -844,6 +844,7 @@ id shortcut
 id showCustom
 id showHome
 id showTitle
+id simpleProgressBar
 id source_text
 id spacer
 id spinner2

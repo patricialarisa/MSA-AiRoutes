@@ -8,6 +8,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -20,7 +21,7 @@ public class RegisterActivity extends AppCompatActivity {
 
     private EditText inputEmail, inputPassword;
     private Button btnSignUp;
-    // private ProgressBar progressBar;
+    private ProgressBar progressBar;
     private FirebaseAuth auth;
 
 
@@ -34,6 +35,7 @@ public class RegisterActivity extends AppCompatActivity {
         btnSignUp = (Button) findViewById(R.id.register_button);
         inputEmail = (EditText) findViewById(R.id.mail_text);
         inputPassword = (EditText) findViewById(R.id.password_text);
+        progressBar = (ProgressBar) findViewById(R.id.simpleProgressBar);
 
         btnSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -57,7 +59,7 @@ public class RegisterActivity extends AppCompatActivity {
                     return;
                 }
 
-                // progressBar.setVisibility(View.VISIBLE);
+                 progressBar.setVisibility(View.VISIBLE);
                 //create user
                 auth.createUserWithEmailAndPassword(email, password)
                         .addOnCompleteListener(RegisterActivity.this, new OnCompleteListener<AuthResult>() {
@@ -71,6 +73,7 @@ public class RegisterActivity extends AppCompatActivity {
                                 if (!task.isSuccessful()) {
                                     Toast.makeText(RegisterActivity.this, "Authentication failed." + task.getException(),
                                             Toast.LENGTH_SHORT).show();
+                                    progressBar.setVisibility(View.GONE);
                                 } else {
                                     startActivity(new Intent(RegisterActivity.this, MainActivity.class));
                                     finish();

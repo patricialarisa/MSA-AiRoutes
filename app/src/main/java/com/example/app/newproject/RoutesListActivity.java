@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 
 import com.google.android.gms.maps.model.LatLng;
@@ -37,10 +38,12 @@ public class RoutesListActivity extends ListActivity {
 
     private Button mapBtn;
     private int arrivalsCounter=0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_routes_list);
+
         ArrayList<String> routes=getIntent().getStringArrayListExtra("routes");
 
         // Create the ArrayAdapter use the item row layout and the list data.
@@ -91,8 +94,7 @@ public class RoutesListActivity extends ListActivity {
 
 
         protected void onPreExecute() {
-            //progressBar.setVisibility(View.VISIBLE);
-            //responseView.setText("");
+            //
         }
 
         protected String doInBackground(Void... urls) {
@@ -124,9 +126,7 @@ public class RoutesListActivity extends ListActivity {
             if(response == null) {
                 response = "THERE WAS AN ERROR";
             }
-            //progressBar.setVisibility(View.GONE);
-            Log.i("INFO", response);
-            responseView.setText(response);
+
 
             String latitudeAirport="";
             String longitudeAirport="";
@@ -146,11 +146,11 @@ public class RoutesListActivity extends ListActivity {
             }
 
 
-            // if(arrivalsCounter==arrivals.size()-5) {
-            context.startActivity(new Intent(context, MapsActivity.class));
+             if(arrivalsCounter==arrivals.size()) {
+                context.startActivity(new Intent(context, MapsActivity.class));
+               // finish();
 
-
-            //  }
+              }
         }
     }
 }

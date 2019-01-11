@@ -28,6 +28,15 @@
         tools:fontFamily="casual"
         android:textStyle="bold"/>
 
+    <ProgressBar
+        android:id="@+id/simpleProgressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="260dp"
+        android:background="@color/colorAccent"
+        android:visibility="invisible" />
+
     <EditText
         android:id="@+id/editText_mail"
         android:layout_width="wrap_content"

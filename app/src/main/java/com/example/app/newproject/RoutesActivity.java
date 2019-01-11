@@ -9,7 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Spinner;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.google.android.gms.maps.model.LatLng;
@@ -17,10 +17,9 @@ import com.google.android.gms.maps.model.LatLng;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.json.JSONTokener;
+
 
 import java.io.BufferedReader;
-import java.io.FileWriter;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -28,7 +27,6 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
-import static com.example.app.newproject.AirportActivity.arrivals;
 
 public class RoutesActivity extends AppCompatActivity {
 
@@ -39,6 +37,7 @@ public class RoutesActivity extends AppCompatActivity {
 
     private EditText sourceLocationText;
     private Button aiportBtn;
+    private ProgressBar progressBar;
 
     //airports name+codeIata to help for the retrieval of arrival airports
     static List<String> airports;
@@ -60,18 +59,20 @@ public class RoutesActivity extends AppCompatActivity {
 
         sourceLocationText = (EditText) findViewById(R.id.source_text);
         responseView= (TextView) findViewById(R.id.responseView);
-        // progressBar = (ProgressBar) findViewById(R.id.progressBar);
+        progressBar = (ProgressBar) findViewById(R.id.simpleProgressBar);
+        aiportBtn=(Button) findViewById(R.id.ais);
         Button queryButton = (Button) findViewById(R.id.list_button);
         queryButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                aiportBtn.setEnabled(true);
                 String sourceLocation = sourceLocationText.getText().toString().trim();
-                 new RetrieveFeedTask(getApplicationContext()).execute();
+                 new RetrieveFeedTask().execute();
             }
         });
 
-        aiportBtn=(Button) findViewById(R.id.ais);
-        aiportBtn.setActivated(false);
+
+        aiportBtn.setEnabled(false);
         aiportBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -82,37 +83,19 @@ public class RoutesActivity extends AppCompatActivity {
 
     }
 
-//    public void startMyActivity(){
-//        //comment for no error
-////        Intent intent = new Intent(this, RoutesListActivity.class);
-////        startActivity(intent);
-//    }
+
 
     class RetrieveFeedTask extends AsyncTask<Void,Void,String> {
 
-        private Exception exception;
-
-        private Context context;
-        private String sourceLocation;
-
-        private RetrieveFeedTask(Context context){
-            this.context=context.getApplicationContext();
-        }
-
-
         protected void onPreExecute() {
-            //progressBar.setVisibility(View.VISIBLE);
-            //responseView.setText("");
+            progressBar.setVisibility(View.VISIBLE);
         }
 
         protected String doInBackground(Void... urls) {
             String sourceLocation = sourceLocationText.getText().toString();
-//            String destinationLocation = destinationLocationText.getText().toString();
-            // Do some validation here
 
             try {
                 URL url= new URL(API_COUNTRY_URL + API_KEY_AIRPORT + "&nameCountry=" + sourceLocation);
-
                 HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
                 try {
                     BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(urlConnection.getInputStream()));
@@ -138,13 +121,10 @@ public class RoutesActivity extends AppCompatActivity {
             if(response == null) {
                 response = "THERE WAS AN ERROR";
             }
-            //progressBar.setVisibility(View.GONE);
-            Log.i("INFO", response);
-            responseView.setText(response);
+            progressBar.setVisibility(View.GONE);
 
-
-            String codeIso2Country="";
-            String nameCountry="";
+            String codeIso2Country=null;
+            String nameCountry=null;
             JSONArray jsonArray = null;
             try {
                 jsonArray = new JSONArray(response);
@@ -152,7 +132,6 @@ public class RoutesActivity extends AppCompatActivity {
                     JSONObject jsonObject = jsonArray.getJSONObject(i);
                     codeIso2Country = jsonObject.getString("codeIso2Country");
                     nameCountry=jsonObject.getString("nameCountry");
-
                 }
 
             } catch (JSONException e) {
@@ -169,7 +148,6 @@ public class RoutesActivity extends AppCompatActivity {
 
     class AirportRetrieveTask extends AsyncTask<Void,Void,String> {
 
-        private Exception exception;
         private Context context;
 
 
@@ -177,10 +155,8 @@ public class RoutesActivity extends AppCompatActivity {
             this.context=context.getApplicationContext();
         }
 
-
         protected void onPreExecute() {
-            //progressBar.setVisibility(View.VISIBLE);
-            //responseView.setText("");
+            progressBar.setVisibility(View.VISIBLE);
         }
 
         protected String doInBackground(Void... urls) {
@@ -213,10 +189,7 @@ public class RoutesActivity extends AppCompatActivity {
             if(response == null) {
                 response = "THERE WAS AN ERROR";
             }
-            //progressBar.setVisibility(View.GONE);
-            Log.i("INFO", response);
-            responseView.setText(response);
-
+            progressBar.setVisibility(View.GONE);
 
             airports=new LinkedList<String>();
             String nameAirport="";
@@ -242,7 +215,8 @@ public class RoutesActivity extends AppCompatActivity {
                 e.printStackTrace();
             }
 
-              context.startActivity(new Intent(context, AirportActivity.class));
+            context.startActivity(new Intent(context, AirportActivity.class));
+          //  finish();
         }
     }
 }
