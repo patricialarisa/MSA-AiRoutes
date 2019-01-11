@@ -39,7 +39,6 @@ public class RoutesActivity extends AppCompatActivity {
 
     private EditText sourceLocationText;
     private Button aiportBtn;
-    private Button mapBtn;
 
     //airports name+codeIata to help for the retrieval of arrival airports
     static List<String> airports;
@@ -51,7 +50,7 @@ public class RoutesActivity extends AppCompatActivity {
     private String countryIso="";
     static TextView responseView;
 
-    private int arrivalsCounter=0;
+
 
 
     @Override
@@ -80,15 +79,6 @@ public class RoutesActivity extends AppCompatActivity {
             }
         });
 
-        mapBtn=(Button) findViewById(R.id.map_button);
-        mapBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                for(String s : arrivals){
-                    new AirportNameRetrieveTask(getApplicationContext(),s).execute();
-                }
-            }
-        });
 
     }
 
@@ -180,7 +170,6 @@ public class RoutesActivity extends AppCompatActivity {
     class AirportRetrieveTask extends AsyncTask<Void,Void,String> {
 
         private Exception exception;
-
         private Context context;
 
 
@@ -254,85 +243,6 @@ public class RoutesActivity extends AppCompatActivity {
             }
 
               context.startActivity(new Intent(context, AirportActivity.class));
-        }
-    }
-
-
-
-    class AirportNameRetrieveTask extends AsyncTask<Void,Void,String> {
-
-        private Exception exception;
-        private Context context;
-        private String iata;
-
-
-        private AirportNameRetrieveTask(Context context,String iata){
-            this.context=context.getApplicationContext();
-            this.iata=iata;
-            arrivalsCounter++;
-        }
-
-
-        protected void onPreExecute() {
-            //progressBar.setVisibility(View.VISIBLE);
-            //responseView.setText("");
-        }
-
-        protected String doInBackground(Void... urls) {
-
-            try {
-                URL url=new URL(API_AIRPORT_URL + API_KEY_AIRPORT + "&codeIataAirport=" + iata);
-                HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
-                try {
-                    BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(urlConnection.getInputStream()));
-                    StringBuilder stringBuilder = new StringBuilder();
-                    String line;
-                    while ((line = bufferedReader.readLine()) != null) {
-                        stringBuilder.append(line).append("\n");
-                    }
-                    bufferedReader.close();
-                    return stringBuilder.toString();
-                }
-                finally{
-                    urlConnection.disconnect();
-                }
-            }
-            catch(Exception e) {
-                Log.e("ERROR", e.getMessage(), e);
-                return null;
-            }
-        }
-
-        protected void onPostExecute(String response) {
-            if(response == null) {
-                response = "THERE WAS AN ERROR";
-            }
-            //progressBar.setVisibility(View.GONE);
-            Log.i("INFO", response);
-            responseView.setText(response);
-
-            String latitudeAirport="";
-            String longitudeAirport="";
-            JSONArray jsonArray = null;
-            try {
-                jsonArray = new JSONArray(response);
-                for (int i = 0; i < jsonArray.length(); i++) {
-                    JSONObject jsonObject = jsonArray.getJSONObject(i);
-                    latitudeAirport = jsonObject.getString("latitudeAirport");
-                    longitudeAirport=jsonObject.getString("longitudeAirport");
-
-                    arrivalAirports.add(new LatLng(Double.parseDouble(latitudeAirport),Double.parseDouble(longitudeAirport)));
-                }
-
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-
-           // if(arrivalsCounter==arrivals.size()-5) {
-                context.startActivity(new Intent(context, MapsActivity.class));
-
-
-          //  }
         }
     }
 }

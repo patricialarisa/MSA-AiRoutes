@@ -27,7 +27,9 @@
         android:text="aiRoutes"
         android:textColor="@color/common_google_signin_btn_text_dark_focused"
         android:textColorLink="@color/common_google_signin_btn_text_dark_focused"
-        android:textSize="35dp" />
+        android:textSize="35dp"
+        tools:fontFamily="casual"
+        android:textStyle="bold"/>
 
     <EditText
         android:id="@+id/mail_text"

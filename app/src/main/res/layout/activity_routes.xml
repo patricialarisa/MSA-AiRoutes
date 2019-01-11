@@ -21,7 +21,8 @@
         android:text="aiRoutes"
         android:textColor="@color/common_google_signin_btn_text_dark_focused"
         android:textSize="35dp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        tools:fontFamily="casual"/>
 
     <!--<Spinner-->
     <!--android:id="@+id/spinner1"-->
@@ -79,7 +80,7 @@
         android:id="@+id/ais"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
+        android:layout_marginTop="450dp"
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
         android:layout_marginBottom="0dp"
@@ -90,15 +91,10 @@
         android:id="@+id/list_button"
         android:layout_width="wrap_content"
         android:layout_height="50dp"
-        android:layout_marginTop="194dp"
+        android:layout_marginTop="203dp"
         android:layout_toRightOf="@+id/source_text"
         android:text="OK" />
 
-    <Button
-        android:id="@+id/map_button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="View Results on Map" />
 
 
 </RelativeLayout>

@@ -22,6 +22,7 @@
         android:textColor="@color/common_google_signin_btn_text_dark_focused"
         android:textSize="35dp"
         android:textStyle="bold"
+        tools:fontFamily="casual"
         />
 
     <Spinner
@@ -40,7 +41,7 @@
         android:id="@+id/ok_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="150dp"
+        android:layout_marginTop="167dp"
         android:layout_toRightOf="@id/spinner2"
         android:text="OK" />
 
