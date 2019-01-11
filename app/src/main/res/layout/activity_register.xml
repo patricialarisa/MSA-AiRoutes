@@ -44,6 +44,7 @@
         android:background="@color/colorPrimaryDark"
         android:focusable="true"
         android:hint="Enter Mail"
+        android:paddingLeft="15dp"
         android:textColor="@color/common_google_signin_btn_text_dark_focused"
         android:textColorHighlight="@color/common_google_signin_btn_text_dark_focused"
         android:textColorHint="@color/common_google_signin_btn_text_dark_focused"
@@ -64,6 +65,7 @@
         android:ems="10"
         android:hint="Password"
         android:inputType="textPassword"
+        android:paddingLeft="15dp"
         android:textColor="@color/common_google_signin_btn_text_dark_focused"
         android:textColorHint="@color/common_google_signin_btn_text_dark_focused"
         android:textColorLink="@color/common_google_signin_btn_text_dark_focused" />

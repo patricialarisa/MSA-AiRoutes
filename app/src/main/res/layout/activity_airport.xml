@@ -21,12 +21,13 @@
         android:text="aiRoutes"
         android:textColor="@color/common_google_signin_btn_text_dark_focused"
         android:textSize="35dp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        />
 
     <Spinner
         android:id="@+id/spinner2"
         android:spinnerMode="dialog"
-        android:layout_width="150dp"
+        android:layout_width="280dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/aiRoutes_textView-airport"
         android:layout_alignParentStart="true"
@@ -45,12 +46,11 @@
 
     <Button
         android:id="@+id/routes_button"
-        android:layout_width="wrap_content"
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="130dp"
-
-
-        android:layout_marginTop="350dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="440dp"
         android:text="Show routes" />
 
 
