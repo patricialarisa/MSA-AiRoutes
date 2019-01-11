@@ -8,7 +8,9 @@ import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
-import static com.example.app.newproject.AirportActivity.routes;
+import java.util.ArrayList;
+
+
 
 public class RoutesListActivity extends ListActivity {
 
@@ -16,14 +18,7 @@ public class RoutesListActivity extends ListActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_routes_list);
-        // Create a list data which will be displayed in inner ListView.
-//        List<String> listData = new ArrayList<String>();
-//        listData.add("Audi");
-//        listData.add("Benz");
-//        listData.add("BMW");
-//        listData.add("Ford");
-//        listData.add("Honda");
-//        listData.add("Toyoto");
+        ArrayList<String> routes=getIntent().getStringArrayListExtra("routes");
 
         // Create the ArrayAdapter use the item row layout and the list data.
         ArrayAdapter<String> listDataAdapter = new ArrayAdapter<String>(this, R.layout.activity_routes_list_row, R.id.listRowTextView, routes);

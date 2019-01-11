@@ -18,8 +18,6 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class MainActivity extends AppCompatActivity{
 
-    //  private FirebaseAuth mAuth;
-
     private EditText inputEmail, inputPassword;
     private FirebaseAuth auth;
     // private ProgressBar progressBar;
@@ -29,6 +27,7 @@ public class MainActivity extends AppCompatActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
 
         auth = FirebaseAuth.getInstance();
 
@@ -37,8 +36,6 @@ public class MainActivity extends AppCompatActivity{
 //            finish();
 //        }
 
-        // set the view now
-        setContentView(R.layout.activity_main);
 
 //        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
 //        setSupportActionBar(toolbar);
@@ -46,7 +43,7 @@ public class MainActivity extends AppCompatActivity{
         inputEmail = (EditText) findViewById(R.id.editText_mail);
         inputPassword = (EditText) findViewById(R.id.editText2_pass);
         // progressBar = (ProgressBar) findViewById(R.id.progressBar);
-        //btnSignup = (Button) findViewById(R.id.btn_signup);
+
         btnLogin = (Button) findViewById(R.id.login_button);
         btnNoAccount= (Button) findViewById(R.id.no_account_button);
         //btnReset = (Button) findViewById(R.id.btn_reset_password);
@@ -54,13 +51,6 @@ public class MainActivity extends AppCompatActivity{
         //Get Firebase auth instance
         auth = FirebaseAuth.getInstance();
 
-//        btnSignup.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                startActivity(new Intent(LoginActivity.this, SignupActivity.class));
-//            }
-//        });
-//
         btnNoAccount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -74,8 +64,8 @@ public class MainActivity extends AppCompatActivity{
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String email = inputEmail.getText().toString();
-                final String password = inputPassword.getText().toString();
+                String email = inputEmail.getText().toString().trim().toLowerCase();
+                final String password = inputPassword.getText().toString().trim();
 
                 if (TextUtils.isEmpty(email)) {
                     Toast.makeText(getApplicationContext(), "Enter email address!", Toast.LENGTH_SHORT).show();
@@ -118,22 +108,11 @@ public class MainActivity extends AppCompatActivity{
     }
 
 
-
-//    @Override
-//    public void onStart() {
-//        super.onStart();
-//        // Check if user is signed in (non-null) and update UI accordingly.
-//        FirebaseUser currentUser = mAuth.getCurrentUser();
-//        //updateUI(currentUser);
-//    }
-
     public void register(View view){
 
         Intent intent=new Intent(this,RegisterActivity.class);
         startActivity(intent);
+       // finish();
     }
 
-    public void signIn(){
-
-    }
 }

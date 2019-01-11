@@ -19,7 +19,7 @@ public class RegisterActivity extends AppCompatActivity {
 
 
     private EditText inputEmail, inputPassword;
-    private Button btnSignIn, btnSignUp, btnResetPassword;
+    private Button btnSignUp;
     // private ProgressBar progressBar;
     private FirebaseAuth auth;
 
@@ -32,7 +32,6 @@ public class RegisterActivity extends AppCompatActivity {
         auth = FirebaseAuth.getInstance();
 
         btnSignUp = (Button) findViewById(R.id.register_button);
-        //btnSignUp = (Button) findViewById(R.id.sign_up_button);
         inputEmail = (EditText) findViewById(R.id.mail_text);
         inputPassword = (EditText) findViewById(R.id.password_text);
 
@@ -40,7 +39,7 @@ public class RegisterActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                String email = inputEmail.getText().toString().trim();
+                String email = inputEmail.getText().toString().trim().toLowerCase();
                 String password = inputPassword.getText().toString().trim();
 
                 if (TextUtils.isEmpty(email)) {

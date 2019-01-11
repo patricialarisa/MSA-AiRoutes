@@ -5,7 +5,7 @@
     android:paddingLeft= "5dp"
     android:paddingRight = "3dp"
     android:paddingTop = "5dp"
-    android:background="@drawable/airplane"
+    android:background="@drawable/background"
     android:paddingBottom = "5dp" tools:context = "com.example.app.newproject.MainActivity">
 
     <TextView

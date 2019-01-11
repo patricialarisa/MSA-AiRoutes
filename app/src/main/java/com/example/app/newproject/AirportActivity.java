@@ -29,16 +29,20 @@ import java.util.List;
 import java.util.Set;
 
 import static com.example.app.newproject.RoutesActivity.API_KEY_AIRPORT;
-import static com.example.app.newproject.RoutesActivity.arrivalAirports;
 import static com.example.app.newproject.RoutesActivity.detailAirports;
 import static com.example.app.newproject.RoutesActivity.responseView;
 
+
 public class AirportActivity extends AppCompatActivity {
 
-    static String airport="";
-    static String departureIata="";
-    static ArrayList<String> routes=new ArrayList<String>();
+   // static String airport="";
+    //departure Iata to retrieve arrival airports
+    private String departureIata="";
+    //departure + arrival Iata to view in list activity
+    private ArrayList<String> routes=new ArrayList<String>();
+    //arrival Iata airports
     static Set<String> arrivals = new HashSet<String>();
+    //departure point to set marker on map
     static LatLng departureLatLng=null;
 
 
@@ -47,19 +51,10 @@ public class AirportActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_airport);
 
-        // Get reference of widgets from XML layout
         final Spinner spinner = (Spinner) findViewById(R.id.spinner2);
         Button btn = (Button) findViewById(R.id.ok_button);
         Button routesBtn=(Button) findViewById(R.id.routes_button);
-        final TextView r=(TextView) findViewById(R.id.responseAirport);
-
-        // Initializing a String Array
-//        String[] plants = new String[]{
-//                "Black birch",
-//                "European weeping birch"
-//        };
-//
-//        final List<String> plantsList = new ArrayList<>(Arrays.asList(plants));
+    //    final TextView r=(TextView) findViewById(R.id.responseAirport);
         final List<String> ai=RoutesActivity.airports;
 
         // Initializing an ArrayAdapter
@@ -74,9 +69,9 @@ public class AirportActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String value=spinner.getSelectedItem().toString();
-                airport=value.substring(0,value.indexOf('('));
+                String airport=value.substring(0,value.indexOf('('));
                 departureIata=value.substring(value.indexOf('(')+1,value.indexOf(')'));
-//                int index=spinner.getSelectedItemPosition();
+
                 int counter=0;
                 String departureLat="";
                 String departureLong="";
@@ -90,8 +85,6 @@ public class AirportActivity extends AppCompatActivity {
                     counter++;
                 }
 
-               // r.setText(arrivalAirports.get(0).latitude+"");
-               // startActivity(new Intent(AirportActivity.this,RoutesActivity.class));
             }
         });
 
@@ -121,19 +114,10 @@ public class AirportActivity extends AppCompatActivity {
         }
 
         protected String doInBackground(Void... urls) {
-//            String sourceLocation = sourceLocationText.getText().toString();
-//            String destinationLocation = destinationLocationText.getText().toString();
-            // Do some validation here
 
             try {
-                URL url=null;
-//                String spinnerText=String.valueOf(spinner.getSelectedItem());
-//                if("Airport".equals(spinnerText)){
-//                    url = new URL(API_AIRPORT_URL + API_KEY_AIRPORT + "&nameAirport=" + sourceLocation);
-//                }else if ("Country".equals(spinnerText)){
-                url = new URL("http://aviation-edge.com/v2/public/routes?key="+API_KEY_AIRPORT+"&departureIata=" + departureIata);
-//                }
-                //URL url = new URL(API_AIRPORT_URL + API_KEY_AIRPORT + "&nameAirport=" + sourceLocation);
+                URL url= new URL("http://aviation-edge.com/v2/public/routes?key="+API_KEY_AIRPORT+"&departureIata=" + departureIata);
+
                 HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
                 try {
                     BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(urlConnection.getInputStream()));
@@ -179,15 +163,15 @@ public class AirportActivity extends AppCompatActivity {
 
                     routes.add(departureIata+" - "+arrivalIata);
                     arrivals.add(arrivalIata);
-
                 }
 
             } catch (JSONException e) {
                 e.printStackTrace();
             }
 
-
-              context.startActivity(new Intent(context, RoutesListActivity.class));
+            Intent intent=new Intent(context, RoutesListActivity.class);
+            intent.putStringArrayListExtra("routes",routes);
+            context.startActivity(intent);
         }
     }
 }

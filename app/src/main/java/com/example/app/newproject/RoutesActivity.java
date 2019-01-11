@@ -32,27 +32,27 @@ import static com.example.app.newproject.AirportActivity.arrivals;
 
 public class RoutesActivity extends AppCompatActivity {
 
-    static String API_KEY_AIRPORT="";
-    static final String API_KEY_CITY="";
-    //https://aviation-edge.com/v2/public/airportDatabase?key=[API_KEY]&nameAirport=DE
-    static final String API_AIRPORT_URL="https://aviation-edge.com/v2/public/airportDatabase?key=";
-    static final String API_COUNTRY_URL="https://aviation-edge.com/v2/public/countryDatabase?key=";
+    public static String API_KEY_AIRPORT="";
+    public static final String API_AIRPORT_URL="https://aviation-edge.com/v2/public/airportDatabase?key=";
+    public static final String API_COUNTRY_URL="https://aviation-edge.com/v2/public/countryDatabase?key=";
 
-    //  static final String API_COUNTRY_URL=" https://aviation-edge.com/v2/public/countryDatabase?key=";
-    //comment for no error
-  //  static ArrayList<Route> routes=new ArrayList<>();
-    EditText sourceLocationText;
-    Button aiportBtn;
-    Button mapBtn;
-//    EditText destinationLocationText;
-//    Spinner spinner;
+
+    private EditText sourceLocationText;
+    private Button aiportBtn;
+    private Button mapBtn;
+
+    //airports name+codeIata to help for the retrieval of arrival airports
     static List<String> airports;
-    static TextView responseView;
-    static FileWriter writer;
-    private String countryIso="";
-    static ArrayList<LatLng> arrivalAirports=new ArrayList<>();
-    int myCounter=0;
+    //possible departure airports with latitude and logitude for map
     static LinkedList<String> detailAirports=new LinkedList<>();
+    //arrival airports for a given departure location(for map - latitude+longitude)
+    static ArrayList<LatLng> arrivalAirports=new ArrayList<>();
+    //country Iso to retrieve possible departure airports
+    private String countryIso="";
+    static TextView responseView;
+
+    private int arrivalsCounter=0;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,22 +60,14 @@ public class RoutesActivity extends AppCompatActivity {
         setContentView(R.layout.activity_routes);
 
         sourceLocationText = (EditText) findViewById(R.id.source_text);
-//        destinationLocationText = (EditText) findViewById(R.id.destination_text);
-//        spinnerer = (Spinner) findViewById(R.id.spinner1);
         responseView= (TextView) findViewById(R.id.responseView);
         // progressBar = (ProgressBar) findViewById(R.id.progressBar);
         Button queryButton = (Button) findViewById(R.id.list_button);
         queryButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //comment for no error
-                //routes.clear();
-                String sourceLocation = sourceLocationText.getText().toString();
-//                String destinationLocation = destinationLocationText.getText().toString();
-//                String spinnerText=String.valueOf(spinner.getSelectedItem());
+                String sourceLocation = sourceLocationText.getText().toString().trim();
                  new RetrieveFeedTask(getApplicationContext()).execute();
-
-
             }
         });
 
@@ -85,8 +77,6 @@ public class RoutesActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 new AirportRetrieveTask(getApplicationContext()).execute();
-              //  startActivity(new Intent(RoutesActivity.this,AirportActivity.class));
-
             }
         });
 
@@ -102,11 +92,11 @@ public class RoutesActivity extends AppCompatActivity {
 
     }
 
-    public void startMyActivity(){
-        //comment for no error
-//        Intent intent = new Intent(this, RoutesListActivity.class);
-//        startActivity(intent);
-    }
+//    public void startMyActivity(){
+//        //comment for no error
+////        Intent intent = new Intent(this, RoutesListActivity.class);
+////        startActivity(intent);
+//    }
 
     class RetrieveFeedTask extends AsyncTask<Void,Void,String> {
 
@@ -131,14 +121,8 @@ public class RoutesActivity extends AppCompatActivity {
             // Do some validation here
 
             try {
-                URL url=null;
-//                String spinnerText=String.valueOf(spinner.getSelectedItem());
-//                if("Airport".equals(spinnerText)){
-//                    url = new URL(API_AIRPORT_URL + API_KEY_AIRPORT + "&nameAirport=" + sourceLocation);
-//                }else if ("Country".equals(spinnerText)){
-                    url = new URL(API_COUNTRY_URL + API_KEY_AIRPORT + "&nameCountry=" + sourceLocation);
-//                }
-                //URL url = new URL(API_AIRPORT_URL + API_KEY_AIRPORT + "&nameAirport=" + sourceLocation);
+                URL url= new URL(API_COUNTRY_URL + API_KEY_AIRPORT + "&nameCountry=" + sourceLocation);
+
                 HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
                 try {
                     BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(urlConnection.getInputStream()));
@@ -187,7 +171,6 @@ public class RoutesActivity extends AppCompatActivity {
 
             countryIso=codeIso2Country;
             aiportBtn.setActivated(true);
-          //  context.startActivity(new Intent(context, MainActivity.class));
         }
     }
 
@@ -212,19 +195,10 @@ public class RoutesActivity extends AppCompatActivity {
         }
 
         protected String doInBackground(Void... urls) {
-            //   String sourceLocation = sourceLocationText.getText().toString();
-//            String destinationLocation = destinationLocationText.getText().toString();
-            // Do some validation here
+
 
             try {
-                URL url=null;
-//                String spinnerText=String.valueOf(spinner.getSelectedItem());
-//                if("Airport".equals(spinnerText)){
-                    url = new URL(API_AIRPORT_URL + API_KEY_AIRPORT + "&codeIso2Country=" + countryIso);
-//                }else if ("Country".equals(spinnerText)){
-               // url = new URL(API_AIRPORT_URL + API_KEY_AIRPORT + "&nameCountry=" + sourceLocation);
-//                }
-                //URL url = new URL(API_AIRPORT_URL + API_KEY_AIRPORT + "&nameAirport=" + sourceLocation);
+                URL url= new URL(API_AIRPORT_URL + API_KEY_AIRPORT + "&codeIso2Country=" + countryIso);
                 HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
                 try {
                     BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(urlConnection.getInputStream()));
@@ -270,6 +244,7 @@ public class RoutesActivity extends AppCompatActivity {
                     departureLat=jsonObject.getString("latitudeAirport");
                     departureLong=jsonObject.getString("longitudeAirport");
 
+                    //airport name+codeIata to display in list
                     airports.add(nameAirport+"("+codeIata+")");
                     detailAirports.add(nameAirport+":"+departureLat+"/"+departureLong);
                 }
@@ -277,7 +252,6 @@ public class RoutesActivity extends AppCompatActivity {
             } catch (JSONException e) {
                 e.printStackTrace();
             }
-
 
               context.startActivity(new Intent(context, AirportActivity.class));
         }
@@ -288,7 +262,6 @@ public class RoutesActivity extends AppCompatActivity {
     class AirportNameRetrieveTask extends AsyncTask<Void,Void,String> {
 
         private Exception exception;
-
         private Context context;
         private String iata;
 
@@ -296,7 +269,7 @@ public class RoutesActivity extends AppCompatActivity {
         private AirportNameRetrieveTask(Context context,String iata){
             this.context=context.getApplicationContext();
             this.iata=iata;
-            myCounter++;
+            arrivalsCounter++;
         }
 
 
@@ -306,19 +279,9 @@ public class RoutesActivity extends AppCompatActivity {
         }
 
         protected String doInBackground(Void... urls) {
-            //   String sourceLocation = sourceLocationText.getText().toString();
-//            String destinationLocation = destinationLocationText.getText().toString();
-            // Do some validation here
 
             try {
-                URL url=null;
-//                String spinnerText=String.valueOf(spinner.getSelectedItem());
-//                if("Airport".equals(spinnerText)){
-                url = new URL(API_AIRPORT_URL + API_KEY_AIRPORT + "&codeIataAirport=" + iata);
-//                }else if ("Country".equals(spinnerText)){
-                // url = new URL(API_AIRPORT_URL + API_KEY_AIRPORT + "&nameCountry=" + sourceLocation);
-//                }
-                //URL url = new URL(API_AIRPORT_URL + API_KEY_AIRPORT + "&nameAirport=" + sourceLocation);
+                URL url=new URL(API_AIRPORT_URL + API_KEY_AIRPORT + "&codeIataAirport=" + iata);
                 HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
                 try {
                     BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(urlConnection.getInputStream()));
@@ -348,8 +311,6 @@ public class RoutesActivity extends AppCompatActivity {
             Log.i("INFO", response);
             responseView.setText(response);
 
-
-           // airports=new ArrayList<String>();
             String latitudeAirport="";
             String longitudeAirport="";
             JSONArray jsonArray = null;
@@ -360,7 +321,6 @@ public class RoutesActivity extends AppCompatActivity {
                     latitudeAirport = jsonObject.getString("latitudeAirport");
                     longitudeAirport=jsonObject.getString("longitudeAirport");
 
-
                     arrivalAirports.add(new LatLng(Double.parseDouble(latitudeAirport),Double.parseDouble(longitudeAirport)));
                 }
 
@@ -368,9 +328,10 @@ public class RoutesActivity extends AppCompatActivity {
                 e.printStackTrace();
             }
 
-
-           // if(myCounter==arrivals.size()-5) {
+           // if(arrivalsCounter==arrivals.size()-5) {
                 context.startActivity(new Intent(context, MapsActivity.class));
+
+
           //  }
         }
     }
