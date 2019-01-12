@@ -32,11 +32,6 @@ public class MainActivity extends AppCompatActivity{
 
         auth = FirebaseAuth.getInstance();
 
-//        if (auth.getCurrentUser() != null) {
-//            startActivity(new Intent(LoginActivity.this, MainActivity.class));
-//            finish();
-//        }
-
         inputEmail = (EditText) findViewById(R.id.editText_mail);
         inputPassword = (EditText) findViewById(R.id.editText2_pass);
         progressBar = (ProgressBar) findViewById(R.id.simpleProgressBar);
@@ -50,10 +45,7 @@ public class MainActivity extends AppCompatActivity{
         btnNoAccount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                startActivity(new Intent(MainActivity.this,RoutesActivity.class));
-              // finish();
-
             }
         });
 

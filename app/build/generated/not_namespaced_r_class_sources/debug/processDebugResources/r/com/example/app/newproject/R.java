@@ -3474,6 +3474,7 @@ public final class R {
     public static final int status_bar_notification_info_overflow=0x7f0c0047;
     public static final int title_activity_maps=0x7f0c0048;
     public static final int title_activity_routes_list=0x7f0c0049;
+    public static final int title_activity_single_maps=0x7f0c004a;
   }
   public static final class style {
     public static final int AlertDialog_AppCompat=0x7f0d0000;

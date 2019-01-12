@@ -12,6 +12,8 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.ListAdapter;
+import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 
@@ -64,20 +66,7 @@ public class RoutesListActivity extends ListActivity {
 
     }
 
-    // When user click list item, this method will be invoked.
-//    @Override
-//    protected void onListItemClick(ListView listView, View v, int position, long id) {
-//        // Get the list data adapter.
-//        ListAdapter listAdapter = listView.getAdapter();
-//        // Get user selected item object.
-//        Object selectItemObj = listAdapter.getItem(position);
-//        String itemText = (String)selectItemObj;
-//
-//        // Create an AlertDialog to show.
-//        AlertDialog alertDialog = new AlertDialog.Builder(this).create();
-//        alertDialog.setMessage(itemText);
-//        alertDialog.show();
-//    }
+
 
     class AirportNameRetrieveTask extends AsyncTask<Void,Void,String> {
 
@@ -148,9 +137,10 @@ public class RoutesListActivity extends ListActivity {
 
              if(arrivalsCounter==arrivals.size()) {
                 context.startActivity(new Intent(context, MapsActivity.class));
-               // finish();
-
               }
         }
     }
+
+
+
 }

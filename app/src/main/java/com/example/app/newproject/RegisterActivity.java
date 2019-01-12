@@ -20,7 +20,7 @@ public class RegisterActivity extends AppCompatActivity {
 
 
     private EditText inputEmail, inputPassword;
-    private Button btnSignUp;
+    private Button btnSignUp,cancelBtn;
     private ProgressBar progressBar;
     private FirebaseAuth auth;
 
@@ -33,6 +33,7 @@ public class RegisterActivity extends AppCompatActivity {
         auth = FirebaseAuth.getInstance();
 
         btnSignUp = (Button) findViewById(R.id.register_button);
+        cancelBtn=(Button)findViewById(R.id.button2);
         inputEmail = (EditText) findViewById(R.id.mail_text);
         inputPassword = (EditText) findViewById(R.id.password_text);
         progressBar = (ProgressBar) findViewById(R.id.simpleProgressBar);
@@ -81,6 +82,13 @@ public class RegisterActivity extends AppCompatActivity {
                             }
                         });
 
+            }
+        });
+
+        cancelBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(RegisterActivity.this, MainActivity.class));
             }
         });
     }

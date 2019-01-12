@@ -1017,6 +1017,7 @@ int string send_password_reset_email 0x7f0c0046
 int string status_bar_notification_info_overflow 0x7f0c0047
 int string title_activity_maps 0x7f0c0048
 int string title_activity_routes_list 0x7f0c0049
+int string title_activity_single_maps 0x7f0c004a
 int style AlertDialog_AppCompat 0x7f0d0000
 int style AlertDialog_AppCompat_Light 0x7f0d0001
 int style Animation_AppCompat_Dialog 0x7f0d0002

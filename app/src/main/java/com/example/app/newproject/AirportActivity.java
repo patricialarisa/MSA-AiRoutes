@@ -101,6 +101,8 @@ public class AirportActivity extends AppCompatActivity {
         });
     }
 
+
+
     class RoutesTask extends AsyncTask<Void,Void,String> {
 
         private Context context;
@@ -170,7 +172,6 @@ public class AirportActivity extends AppCompatActivity {
             Intent intent=new Intent(context, RoutesListActivity.class);
             intent.putStringArrayListExtra("routes",routes);
             context.startActivity(intent);
-           // finish();
         }
     }
 }

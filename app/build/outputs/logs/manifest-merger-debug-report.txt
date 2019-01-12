@@ -169,7 +169,7 @@ ADDED from C:\Users\Patricia\AndroidStudioProjects\NewProject\app\src\main\Andro
 	android:name
 		ADDED from C:\Users\Patricia\AndroidStudioProjects\NewProject\app\src\main\AndroidManifest.xml:41:13-58
 activity#com.example.app.newproject.MapsActivity
-ADDED from C:\Users\Patricia\AndroidStudioProjects\NewProject\app\src\main\AndroidManifest.xml:44:9-46:68
+ADDED from C:\Users\Patricia\AndroidStudioProjects\NewProject\app\src\main\AndroidManifest.xml:44:9-46:59
 	android:label
 		ADDED from C:\Users\Patricia\AndroidStudioProjects\NewProject\app\src\main\AndroidManifest.xml:46:13-56
 	android:name

@@ -1018,6 +1018,7 @@ string send_password_reset_email
 string status_bar_notification_info_overflow
 string title_activity_maps
 string title_activity_routes_list
+string title_activity_single_maps
 style AlertDialog_AppCompat
 style AlertDialog_AppCompat_Light
 style Animation_AppCompat_Dialog

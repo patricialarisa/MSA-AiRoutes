@@ -30,7 +30,7 @@ import java.util.List;
 
 public class RoutesActivity extends AppCompatActivity {
 
-    public static String API_KEY_AIRPORT="";
+    public static String API_KEY_AIRPORT="3eb847-f2cec6";//"a6c64c-fe0a44";
     public static final String API_AIRPORT_URL="https://aviation-edge.com/v2/public/airportDatabase?key=";
     public static final String API_COUNTRY_URL="https://aviation-edge.com/v2/public/countryDatabase?key=";
 
@@ -79,11 +79,7 @@ public class RoutesActivity extends AppCompatActivity {
                 new AirportRetrieveTask(getApplicationContext()).execute();
             }
         });
-
-
     }
-
-
 
     class RetrieveFeedTask extends AsyncTask<Void,Void,String> {
 
@@ -216,7 +212,7 @@ public class RoutesActivity extends AppCompatActivity {
             }
 
             context.startActivity(new Intent(context, AirportActivity.class));
-          //  finish();
+
         }
     }
 }
